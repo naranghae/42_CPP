@@ -14,6 +14,7 @@
 # define PHONEBOOK_HPP
 #include <iostream>
 #include <string>
+#include <string.h>
 #include <iomanip>
 #define PHONE_MAX	8
 #define EXIT		1
@@ -36,13 +37,16 @@ private:
 
 public:
 	void			add_phonebook(int save_phone);
-	void			printt(std::string save_phone);
+	void			all_print(std::string save_phone);
+	void			search_print(std::string search_input, int save_phone);
+	void			write_info(int index);
 };
 
-void				start_view(void);
+void				start_view(int save_phone);
 void				fullbook_view(void);
-int					select_type(phonebook *book, std::string input, int *wrong_typing, int &save_phone);
+int					select_type(phonebook *book, std::string input, int &wrong_typing, int &save_phone);
 void				var_change(int *wrong_typing, int i);
-//void				add_phonebook(t_phonebook *phonebook, int save_phone);
-//void				input_info(t_phonebook *phonebook);
+int					search_check(int index, int save_phone);
+void				contacts_info(int save_phone);
+void				search_item(void);
 #endif

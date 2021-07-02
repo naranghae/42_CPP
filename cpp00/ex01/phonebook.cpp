@@ -32,25 +32,29 @@
   else std::cout << "The price entered is: " << price << '\n';
 */
 
-void	start_view(void)
+void	start_view(int save_phone)
 {
 	std::cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━SELECT━━━━━━━━━━━━━━━━━━━━━━━━━┓" << std::endl;
 	std::cout << "┃                        1. EXIT                         ┃" << std::endl;
 	std::cout << "┃                        2. SEARCH                       ┃" << std::endl;
-	std::cout << "┃                        3. ADD                          ┃" << std::endl;
+	std::cout << "┃                        3. ADD (" << save_phone << " / " << "8) " << "                 ┃" << std::endl;
 	std::cout << "┃           Corresponding numbers can be entered.        ┃" << std::endl;
 	std::cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << std::endl;
-	std::cout << "select: ";
 }
 
-void	fullbook_view(void)
+void	contacts_info(phonebook *book, int save_phone)
 {
-	std::cout << "┏━━━━━━━━━━━━━━━━━━━━━━━━━SELECT━━━━━━━━━━━━━━━━━━━━━━━━━┓" << std::endl;
-	std::cout << "┃                        1. EXIT                         ┃" << std::endl;
-	std::cout << "┃                        2. SEARCH                       ┃" << std::endl;
-	std::cout << "┃           Corresponding numbers can be entered.        ┃" << std::endl;
-	std::cout << "┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛" << std::endl;
-	std::cout << "select: ";
+	int		i;
+
+	i = -1;
+	if (save_phone > 0)
+	{
+		std::cout << std::endl;
+		search_item();
+		while (++i < save_phone)
+			book->write_info(i + 1);
+		std::cout << std::endl;
+	}
 }
 
 int		main(void)
@@ -64,27 +68,30 @@ int		main(void)
 	save_phone = 0;
 	while (!std::cin.eof())
 	{
-		if (!wrong_typing && save_phone != PHONE_MAX)
-			start_view();
-		else if (!wrong_typing && save_phone == PHONE_MAX)
-			fullbook_view();
+		if (!wrong_typing)
+		{
+			start_view(save_phone);
+			contacts_info(&book, save_phone);
+		}
+		std::cout << "select: ";
 		std::getline(std::cin, input);
-		if (select_type(&book, input, &wrong_typing, save_phone) == 1)
+
+		if (select_type(&book, input, wrong_typing, save_phone) == 1)
 			break ;
 	}
 	std::cout << "EXIT phonebook." << std::endl;
 	return (0);
 }
 
-void	var_change(int *wrong_typing, int i)
+void	var_change(int &wrong_typing, int i)
 {
 	if (i == 0)
-		*wrong_typing = 0;
+		wrong_typing = 0;
 	else if (i == 1)
-		*wrong_typing = 1;
+		wrong_typing = 1;
 }
 
-int		select_type(phonebook *book, std::string input, int *wrong_typing, int &save_phone)
+int		select_type(phonebook *book, std::string input, int &wrong_typing, int &save_phone)
 {
 	std::string		search_input;
 
@@ -94,19 +101,24 @@ int		select_type(phonebook *book, std::string input, int *wrong_typing, int &sav
 		std::cout << "phonebook full" << std::endl;
 		return (2);
 	}
+	if ((save_phone == 0) && (!input.compare("SEARCH") || !input.compare("2")))
+	{
+		var_change(wrong_typing, 0);
+		std::cout << "There are no saved phonebook." << std::endl;
+		return (2);
+	}
 	if (!input.compare("EXIT") || !input.compare("1"))
 		return (1);
 	else if (!input.compare("SEARCH") || !input.compare("2"))
 	{
 		std::cout << "search: ";
 		std::getline(std::cin, search_input);
-		book->printt(search_input);
-		std::cout << input << std::endl;
+		book->search_print(search_input, save_phone);
+		//book->all_print(search_input);
 	}
 	else if (!input.compare("ADD") || !input.compare("3"))
 	{
 		book->add_phonebook(save_phone);
-		std::cout << "save_phone" << save_phone << std::endl;
 		save_phone++;
 	}
 	else if (std::cin.eof())
@@ -115,29 +127,123 @@ int		select_type(phonebook *book, std::string input, int *wrong_typing, int &sav
 	{
 		var_change(wrong_typing, 1);
 		std::cout << "Please input again." << std::endl;
-		std::cout << "select: ";
 		return (0);
 	}
 	var_change(wrong_typing, 0);
 	return (0);
 }
 
-void	phonebook::printt(std::string search_input)
+int		search_check(int index, int save_phone)
+{
+	if (!(index >= 1 && index <= 8))
+	{
+		std::cout << "This is not a valid index." << std::endl;
+		return (1);
+	}
+	if (index >= save_phone + 1)
+	{
+		std::cout << "There are no phonebook." << std::endl;
+		return (1);
+	}
+	return (0);
+}
+
+void	search_item(void)
+{
+	std::cout << std::setw(6);
+	std::cout << " index" << " |";
+	std::cout << std::setw(10);
+	std::cout << "first_name" << "|";
+	std::cout << std::setw(10);
+	std::cout << "last_name" << "|";
+	std::cout << std::setw(10);
+	std::cout << "nickname" << "|" << std::endl;
+	std::cout << "────────────────────────────────────────" << std::endl;
+
+}
+
+void	phonebook::write_info(int index)
+{
+	int			i;
+	const char	*str;
+
+	i = -1;
+	std::cout << std::setw(6);
+	std::cout << index << " |";
+	if (strlen(first_name[index - 1].c_str()) > 10)
+	{
+		str = first_name[index - 1].c_str();
+		while (++i < 9)
+			std::cout << str[i];
+		std::cout << ".|";
+		str = NULL;
+		i = -1;
+	}
+	else
+	{
+		std::cout << std::setw(10);
+		std::cout << first_name[index - 1] << "|";
+	}
+	if (strlen(last_name[index - 1].c_str()) > 10)
+	{
+		str = last_name[index - 1].c_str();
+		while (++i < 9)
+			std::cout << str[i];
+		std::cout << ".|";
+		str = NULL;
+		i = -1;
+	}
+	else
+	{
+		std::cout << std::setw(10);
+		std::cout << last_name[index - 1] << "|";
+	}
+	if (strlen(nickname[index - 1].c_str()) > 10)
+	{
+		str = nickname[index - 1].c_str();
+		while (++i < 9)
+			std::cout << str[i];
+		std::cout << ".|" << std::endl;;
+		str = NULL;
+		i = -1;
+	}
+	else
+	{
+		std::cout << std::setw(10);
+		std::cout << nickname[index - 1] << "|" << std::endl;
+	}
+}
+
+void	phonebook::search_print(std::string search_input, int save_phone)
+{
+	int			index;
+
+	index = std::strtol(search_input.c_str(), NULL, 10);
+	if (search_check(index, save_phone))
+		return ;
+	std::cout << std::endl;
+	std::cout << "            <SEARCH PHONEBOOK >" << std::endl;
+	search_item();
+	write_info(index);
+	std::cout << std::endl;
+}
+
+void	phonebook::all_print(std::string search_input)
 {
 	int save_phone;
 
 	save_phone = std::strtol(search_input.c_str(), NULL, 10);
-	std::cout << first_name[save_phone] << std::endl;
-	std::cout << last_name[save_phone] << std::endl;
-	std::cout << nickname[save_phone] << std::endl;
-	std::cout << login[save_phone] << std::endl;
-	std::cout << postal_address[save_phone] << std::endl;
-	std::cout << email_address[save_phone] << std::endl;
-	std::cout << phone_number[save_phone] << std::endl;
-	std::cout << birthday_date[save_phone] << std::endl;
-	std::cout << favorite_meal[save_phone] << std::endl;
-	std::cout << underwear_color[save_phone] << std::endl;
-	std::cout << darkest_secret[save_phone] << std::endl;
+	std::cout << "first_name: " << first_name[save_phone] << std::endl;
+	std::cout << "last_name: " << last_name[save_phone] << std::endl;
+	std::cout << "nickname: " << nickname[save_phone] << std::endl;
+	std::cout << "login: " << login[save_phone] << std::endl;
+	std::cout << "postal_address: " << postal_address[save_phone] << std::endl;
+	std::cout << "email_address: " << email_address[save_phone] << std::endl;
+	std::cout << "phone_number: " << phone_number[save_phone] << std::endl;
+	std::cout << "birthday_date: " << birthday_date[save_phone] << std::endl;
+	std::cout << "favorite_meal: " << favorite_meal[save_phone] << std::endl;
+	std::cout << "underwear_color: " << underwear_color[save_phone] << std::endl;
+	std::cout << "darkest_secret: " << darkest_secret[save_phone] << std::endl;
 }
 
 void	phonebook::add_phonebook(int save_phone)
