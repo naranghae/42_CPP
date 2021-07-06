@@ -5,32 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/05 15:11:33 by chanykim          #+#    #+#             */
-/*   Updated: 2021/07/06 13:24:11 by chanykim         ###   ########.fr       */
+/*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
+/*   Updated: 2021/07/06 21:08:25 by chanykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Pony.hpp"
-
-void	ponyOnTheStack()
-{
-	Pony stack_pony("stack");
-	stack_pony.sleep_pony();
-	stack_pony.awake_pony();
-}
-
-void	ponyOnTheHeap()
-{
-	Pony *heap_p = new Pony("heap");
-	heap_p->sleep_pony();
-	heap_p->awake_pony();
-	delete heap_p;
-}
+#include "Zombie.hpp"
 
 int		main(void)
 {
-	ponyOnTheStack();
+	Zombie *zom;
+	std::string name;
+	std::string randomName[6] = {"jinbekim", "hyopark", "hson", "hekang", "ghong", "sushin"};
+	int	num;
+	srand((unsigned int)time(NULL));
+	std::cout << "zombie 이름은? : ";
+	getline(std::cin, name);
+	zom = newZombie(name);
+	std::cout << "newZombie :: ";
+	zom->Announce();
 	std::cout << std::endl;
-	ponyOnTheHeap();
+
+	std::cout << "randomChump :: ";
+	num = rand() % 6;
+	std::cout << num << std::endl;
+	randomChump(randomName[num]);
+	delete zom;
 	return (0);
 }

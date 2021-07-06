@@ -6,7 +6,7 @@
 #    By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/06/30 14:15:41 by chanykim          #+#    #+#              #
-#    Updated: 2021/06/30 16:24:13 by chanykim         ###   ########.fr        #
+#    Updated: 2021/07/06 17:54:13 by chanykim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,9 +21,6 @@ CXXFLAGS = -Wall -Wextra -Werror
 OBJ = $(SRC:.cpp=.o)
 
 all : $(NAME)
-
-$(OBJ)%.o : $(SRC)%.cpp
-	$(CXX) $(CXXFLAGS) -c $^ -o $@
 
 $(NAME) : $(OBJ)
 	$(CXX) $(CXXFLAGS) -o $@ $^
