@@ -6,31 +6,11 @@
 /*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/06/30 16:25:12 by chanykim          #+#    #+#             */
-/*   Updated: 2021/07/01 20:35:17 by chanykim         ###   ########.fr       */
+/*   Updated: 2021/07/05 14:52:15 by chanykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "phonebook.h"
-
-//연락처는 8개까지만 저장가능 9개가 들어오면 어떻게 되는지 헨들링해야함
-//동적할당 불가
-//SEARCH 때 필요함-> std::setprecision(3)
-/*
-  double f =3.14159;
-  std::cout << std::fixed;
-  std::cout << std::setprecision(4) << f << '\n'; //3.1416
-  std::cout << std::setprecision(9) << f << '\n'; //3.141590000
-*/
-
-//ERROR handling
-/* 숫자가 아니면 에러
-  long double price;
-  std::cout << "Please, enter the price: ";
-  std::cin >> std::get_money(price);
-
-  if (std::cin.fail()) std::cout << "Error reading price\n";
-  else std::cout << "The price entered is: " << price << '\n';
-*/
 
 void	start_view(int save_phone)
 {
