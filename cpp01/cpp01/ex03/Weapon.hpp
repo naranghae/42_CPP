@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,22 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Zombie_HPP
-# define Zombie_HPP
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 # include <iostream>
 # include <string>
 
-class	Zombie {
+class	Weapon {
 private:
-	std::string		name;
+	std::string		type;
 
 public:
-	Zombie(std::string zombie_name);
-	Zombie();
-	~Zombie();
-	void			Announce(void);
-};
+	Weapon();
+	Weapon(std::string const &type);
+	~Weapon();
 
-Zombie*		zombieHorde(int N, std::string name);
+	const std::string&	getType();
+	void				setType(const std::string& type);
+};
 
 #endif

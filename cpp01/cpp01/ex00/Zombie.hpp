@@ -10,8 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef Zombie_HPP
-# define Zombie_HPP
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
 # include <iostream>
 # include <string>
 # include <cstdlib>
@@ -26,6 +26,7 @@ public:
 	Zombie();
 	~Zombie();
 	void			Announce(void);
+	void			setName(std::string zombie_name);
 };
 
 Zombie*				newZombie(std::string name);

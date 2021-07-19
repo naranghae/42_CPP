@@ -6,22 +6,17 @@
 #    By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/07/06 14:32:43 by chanykim          #+#    #+#              #
-#    Updated: 2021/07/06 19:35:56 by chanykim         ###   ########.fr        #
+#    Updated: 2021/07/06 19:52:37 by chanykim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = Zombie
 
-SRC = main.cpp \
-	Zombie.cpp\
-	newZombie.cpp\
-	randomChump.cpp
+SRC = main.cpp Zombie.cpp ZombieHorde.cpp
 
 CXX = clang++
 
 CXXFLAGS = -Wall -Wextra -Werror
-
-INCLUDE = Zombie.hpp
 
 OBJ = $(SRC:.cpp=.o)
 

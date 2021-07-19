@@ -1,0 +1,28 @@
+int		main(int argc, char **argv)
+{
+	std::ifstream	readFile;
+	std::string		s1;
+	std::string		s2;
+	std::string		error;
+
+	if (argc != 4)
+	{
+		std::cout << "argument error" << std::endl;
+		return (0);
+	}
+	readFile.open(argv[1]);
+	s1 = argv[2];
+	s2 = argv[3];
+	if (readFile.is_open())
+	{
+		error = is_empty(s1, s2);
+		if ((error.compare("noproblem")) == 0)
+			ft_replace(readFile, argv[1], s1, s2);
+		else
+			std::cout << error << std::endl;
+	}
+	else
+		std::cout << "Error: " << argv[1] << "not found" << std::endl;
+	readFile.close();
+	return (0);
+}

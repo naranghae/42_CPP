@@ -10,15 +10,13 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Zombie
+NAME = brain
 
-SRC = main.cpp Zombie.cpp ZombieHorde.cpp
+SRC = main.cpp
 
 CXX = clang++
 
 CXXFLAGS = -Wall -Wextra -Werror
-
-INCLUDE = Zombie.hpp
 
 OBJ = $(SRC:.cpp=.o)
 
