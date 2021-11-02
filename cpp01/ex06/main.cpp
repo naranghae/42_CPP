@@ -1,19 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/06 14:52:01 by chanykim          #+#    #+#             */
-/*   Updated: 2021/11/02 19:21:54 by chanykim         ###   ########.fr       */
+/*   Created: 2021/11/02 16:18:57 by chanykim          #+#    #+#             */
+/*   Updated: 2021/11/02 19:20:35 by chanykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#include "Karen.hpp"
 
-Zombie*		newZombie(std::string name)
+int		main(int argc, char **argv)
 {
-	Zombie *create_zombie = new Zombie(name);
-	return (create_zombie);
+	Karen	karen;
+
+	if (argc != 2) {
+		std::cout << "argument error." << std::endl;
+		return 0;
+	}
+	std::string level = argv[1];
+	karen.complain(level);
+	return 0;
 }
