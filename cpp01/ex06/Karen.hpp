@@ -1,19 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   Karen.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/06 14:52:01 by chanykim          #+#    #+#             */
-/*   Updated: 2021/11/02 19:21:54 by chanykim         ###   ########.fr       */
+/*   Created: 2021/11/02 16:17:03 by chanykim          #+#    #+#             */
+/*   Updated: 2021/11/02 17:56:39 by chanykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef KAREN_HPP
+# define KAREN_HPP
+# include <iostream>
+# include <algorithm>
 
-Zombie*		newZombie(std::string name)
-{
-	Zombie *create_zombie = new Zombie(name);
-	return (create_zombie);
-}
+class Karen{
+private:
+	void debug( void );
+	void info( void );
+	void warning( void );
+	void error( void );
+
+public:
+	Karen();
+	~Karen();
+	void complain( std::string level );
+};
+#endif

@@ -6,7 +6,7 @@
 /*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/07/06 20:06:04 by chanykim         ###   ########.fr       */
+/*   Updated: 2021/11/02 19:20:41 by chanykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,21 +20,21 @@ void	ft_replace(std::ifstream& rf, std::string name, std::string s1, std::string
 	std::size_t		pos;
 	std::size_t		i;
 	std::string		file;
-	
+
 	i = 0;
 	refile.open(name + ".replace", std::ios_base::trunc | std::ios_base::out);
 	if (refile.is_open())
 	{
 		std::getline(rf, file, '\0');
 		pos = file.find(s1); //  first index
-		if (pos == std::string::npos)
+		if (pos == std::string::npos) // 만약 찾는 문장이 없으면
 		{
 			std::cout << "Error: `" << s1 << "` is a string that is not in the text file." << std::endl;
 			refile << "Error: s1 is a string that is not in the text file.";
 			refile.close();
 			return ;
 		}
-		while (pos != std::string::npos) // if there is no string return.
+		while (pos != std::string::npos)
 		{
 			while (i != pos)
 				refile << file[i++];
@@ -42,7 +42,7 @@ void	ft_replace(std::ifstream& rf, std::string name, std::string s1, std::string
 			i += s1.size();
 			pos = file.find(s1, i);
 		}
-		while (i != file.size()) //string remain.
+		while (i != file.size()) //남은 문장
 			refile << file[i++];
 	}
 	else

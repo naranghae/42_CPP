@@ -5,14 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/07/06 14:32:43 by chanykim          #+#    #+#              #
-#    Updated: 2021/11/02 16:14:45 by chanykim         ###   ########.fr        #
+#    Created: 2021/11/02 16:19:11 by chanykim          #+#    #+#              #
+#    Updated: 2021/11/02 18:13:34 by chanykim         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = Karen
+NAME = karenFilter
 
-SRC = main.cpp Karen.hpp, and Karen.cpp
+SRC = main.cpp Karen.cpp
 
 CXX = clang++
 
