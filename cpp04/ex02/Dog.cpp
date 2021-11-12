@@ -31,7 +31,7 @@ Dog::Dog(Dog const &src)
 
 Dog::Dog(Brain &brain)
 {
-	this->brain = new Brain(brain);
+	this->brain = &brain;
 	this->type = "Dog";
 	std::cout << "Dog Constructor called." << std::endl;
 }
@@ -41,9 +41,7 @@ Dog &Dog::operator=(Dog const &src)
 	std::cout << "Dog equal operator called." << std::endl;
 	if (this != &src)
 	{
-		if (brain)
-			delete brain;
-		brain = new Brain(*src.brain);
+		brain = src.brain;
 		this->type = src.type;
 	}
 	return *this;

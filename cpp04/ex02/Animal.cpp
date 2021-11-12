@@ -40,8 +40,3 @@ std::string Animal::getType(void) const
 {
 	return this->type;
 }
-
-void	Animal::makeSound() const
-{
-	std::cout << "Non-inherited Animal sounds." << std::endl;
-}

@@ -31,7 +31,7 @@ Cat::Cat(Cat const &src)
 
 Cat::Cat(Brain &brain)
 {
-	this->brain = new Brain(brain);
+	this->brain = &brain;
 	this->type = "Cat";
 	std::cout << "Cat Constructor called." << std::endl;
 }
@@ -41,9 +41,7 @@ Cat &Cat::operator=(Cat const &src)
 	std::cout << "Cat equal operator called." << std::endl;
 	if (this != &src)
 	{
-		if (brain)
-			delete brain;
-		brain = new Brain(*src.brain);
+		brain = src.brain;
 		this->type = src.type;
 	}
 	return *this;
