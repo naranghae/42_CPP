@@ -23,6 +23,12 @@ WrongCat::~WrongCat()
 	std::cout << "WrongCat Destructor called." << std::endl;
 }
 
+WrongCat::WrongCat(WrongCat const &src)
+{
+	std::cout << "WrongCat copy Constructor called." << std::endl;
+	*this = src;
+}
+
 WrongCat &WrongCat::operator=(WrongCat const &src)
 {
 	std::cout << "WrongCat equal operator called." << std::endl;

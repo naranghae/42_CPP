@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/11 08:39:10 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 10:04:44 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,14 @@ Intern::Intern()
 
 Intern:: ~Intern()
 {
-	std::cout << "Form Destructor called." << std::endl;
+	std::cout << "Intern Destructor called." << std::endl;
+}
+
+Intern &Intern::operator=(Intern const &src)
+{
+	std::cout << "Intern equal operator called." << std::endl;
+	(void)src;
+	return *this;
 }
 
 Intern::Intern(Intern const &src)

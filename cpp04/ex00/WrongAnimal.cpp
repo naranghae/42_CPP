@@ -22,6 +22,12 @@ WrongAnimal::~WrongAnimal()
 	std::cout << "WrongAnimal Destructor called." << std::endl;
 }
 
+WrongAnimal::WrongAnimal(WrongAnimal const &src)
+{
+	std::cout << "WrongAnimal copy Constructor called." << std::endl;
+	*this = src;
+}
+
 WrongAnimal &WrongAnimal::operator=(WrongAnimal const &src)
 {
 	std::cout << "WrongAnimal equal operator called." << std::endl;

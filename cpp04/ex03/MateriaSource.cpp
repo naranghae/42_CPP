@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/11/12 11:41:56 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 09:39:15 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@ MateriaSource::~MateriaSource()
 {
 	for(int i = 0 ; i < max; i++)
 		delete src[i];
+}
+
+MateriaSource::MateriaSource(MateriaSource const &src)
+{
+	for(int i = 0;src.max; i++)
+		this->learnMateria(src.src[i]->clone());
 }
 
 void MateriaSource::learnMateria(AMateria* m)

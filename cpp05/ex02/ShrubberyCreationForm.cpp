@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:32:43 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/02 10:40:31 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 09:57:43 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ ShrubberyCreationForm::ShrubberyCreationForm():
 ShrubberyCreationForm::~ShrubberyCreationForm()
 {
 	std::cout << "ShrubberyCreationForm Destructor called." << std::endl;
+}
+
+ShrubberyCreationForm &ShrubberyCreationForm::operator=(ShrubberyCreationForm const &src)
+{
+	std::cout << "ShrubberyCreationForm equal operator called." << std::endl;
+	if(this != &src)
+		this->target = src.target;
+	return *this;
 }
 
 ShrubberyCreationForm::ShrubberyCreationForm(std::string _target):

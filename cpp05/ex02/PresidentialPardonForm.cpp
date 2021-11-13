@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:32:43 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/02 11:21:04 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 09:55:48 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ PresidentialPardonForm::PresidentialPardonForm():
 PresidentialPardonForm::~PresidentialPardonForm()
 {
 	std::cout << "PresidentialPardonForm Destructor called." << std::endl;
+}
+
+PresidentialPardonForm &PresidentialPardonForm::operator=(PresidentialPardonForm const &src)
+{
+	std::cout << "PresidentialPardonForm equal operator called." << std::endl;
+	if(this != &src)
+		this->target = src.target;
+	return *this;
 }
 
 PresidentialPardonForm::PresidentialPardonForm(std::string _target):

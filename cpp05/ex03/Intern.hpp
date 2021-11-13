@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/11 08:37:49 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 10:03:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ public:
 	Intern();
 	virtual ~Intern();
 	Intern(Intern const &src);
+	Intern &operator=(Intern const &src);
 	Form *makeForm(std::string reqName, std::string target);
 };
 

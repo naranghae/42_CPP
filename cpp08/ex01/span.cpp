@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/28 13:54:55 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 11:16:37 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,21 @@ Span::Span(Span const &copy){
 
 Span::Span(unsigned int _n): n(_n) {}
 
+Span	&Span::operator=(Span const  &src)
+{
+	if (this != &src)
+		this->v = src.v;
+	return *this;
+}
+
 void	Span::addNumber(int const add)
 {
 	if (this->v.size() >= n)
+	{
+		this->v.clear();
+		std::vector<int>().swap(this->v);
 		throw MemoryException();
+	}
 	v.push_back(add);
 }
 

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/11/12 11:32:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 09:23:01 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@ Character::~Character()
 		if (inven[i])
 			delete inven[i];
 	}
+}
+
+Character::Character(Character const &src)
+{
+	this->name = src.name;
+	for (int i = 0; i < SLOTS; i++)
+		if(!this->inven[i])
+			this->equip(src.inven[i]->clone());
 }
 
 Character::Character(std::string const _name): name(_name)

@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:32:43 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/02 10:29:23 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 09:57:12 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ public:
 
 	RobotomyRequestForm(std::string target);
 	RobotomyRequestForm(RobotomyRequestForm const &src);
+	RobotomyRequestForm &operator=(RobotomyRequestForm const &src);
 	std::string getTarget() const;
 	void	execute(Bureaucrat const &executor) const;
 };

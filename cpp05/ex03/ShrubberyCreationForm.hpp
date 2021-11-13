@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:32:43 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/02 10:23:52 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 10:02:55 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ public:
 
 	ShrubberyCreationForm(std::string target);
 	ShrubberyCreationForm(ShrubberyCreationForm const &src);
+	ShrubberyCreationForm &operator=(ShrubberyCreationForm const &src);
 	std::string getTarget() const;
 	void	execute(Bureaucrat const &executor) const;
 };

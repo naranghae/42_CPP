@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:32:43 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/02 11:04:45 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 09:54:17 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
 
 	PresidentialPardonForm(std::string target);
 	PresidentialPardonForm(PresidentialPardonForm const &src);
+	PresidentialPardonForm &operator=(PresidentialPardonForm const &src);
 	std::string getTarget() const;
 	void	execute(Bureaucrat const &executor) const;
 };

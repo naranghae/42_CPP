@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:32:43 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/02 11:20:50 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 09:57:28 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@ RobotomyRequestForm::RobotomyRequestForm():
 RobotomyRequestForm::~RobotomyRequestForm()
 {
 	std::cout << "RobotomyRequestForm Destructor called." << std::endl;
+}
+
+RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &src)
+{
+	std::cout << "RobotomyRequestForm equal operator called." << std::endl;
+	if(this != &src)
+		this->target = src.target;
+	return *this;
 }
 
 RobotomyRequestForm::RobotomyRequestForm(std::string _target):

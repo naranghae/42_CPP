@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME = ScalarConversion
+NAME = convert
 
 SRC = main.cpp \
 		conversion.cpp

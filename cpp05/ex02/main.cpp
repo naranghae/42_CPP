@@ -117,8 +117,10 @@ int		main()
 {
 	ShrubberyCreationFormTest1();
 	ShrubberyCreationFormTest2();
+	std::cout << std::endl;
 	RobotomyRequestFormTest1();
 	RobotomyRequestFormTest2();
+	std::cout << std::endl;
 	PresidentialPardonFormTest1();
 	PresidentialPardonFormTest2();
 }

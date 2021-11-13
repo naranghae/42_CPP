@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/11/12 11:14:17 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/13 09:18:52 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Character: public ICharacter
 		~Character();
 		Character(std::string const _name);
 		Character &operator=(Character const &src);
+		Character(Character const &src);
 
 	 	std::string const & getName() const;
 	 	void equip(AMateria* m);

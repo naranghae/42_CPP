@@ -20,9 +20,18 @@ int main(void)
     sp.addNumber(17);
     sp.addNumber(9);
     sp.addNumber(11);
-    
+
     std::cout << sp.shortestSpan() << std::endl;
     std::cout << sp.longestSpan() << std::endl;
-    
+
+    //memory error
+    // try
+    // {
+    //     sp.addNumber(12);
+    // }
+    // catch(const std::exception& e)
+    // {
+    //     std::cerr << e.what() << std::endl;
+    // }
     return 0;
 }
