@@ -15,25 +15,21 @@
 Cat::Cat()
 {
 	this->type = "Cat";
+	this->brain = new Brain();
 	std::cout << "Cat Constructor called." << std::endl;
 }
 
 Cat::~Cat()
 {
+	delete this->brain;
 	std::cout << "Cat Destructor called." << std::endl;
 }
 
 Cat::Cat(Cat const &src)
 {
 	std::cout << "Cat copy Constructor called." << std::endl;
-	*this = src;
-}
-
-Cat::Cat(Brain &brain)
-{
-	this->brain = &brain;
-	this->type = "Cat";
-	std::cout << "Cat Constructor called." << std::endl;
+	this->type = src.type;
+	this->brain = new Brain(*src.brain);
 }
 
 Cat &Cat::operator=(Cat const &src)
@@ -41,8 +37,8 @@ Cat &Cat::operator=(Cat const &src)
 	std::cout << "Cat equal operator called." << std::endl;
 	if (this != &src)
 	{
-		brain = src.brain;
-		this->type = src.type;
+		delete this->brain;
+		this->brain = new Brain(*src.brain);
 	}
 	return *this;
 }

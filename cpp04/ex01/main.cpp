@@ -48,16 +48,19 @@ int		main()
 	}
 	std::cout << std::endl;
 	std::cout << "Cat or Dog copy deep" << std::endl;
-	Brain catBrain;
-	Brain dogBrain;
-	catBrain.setIdeas(0, "hahaha");
-	catBrain.setIdeas(1, "im your father!");
-	catBrain.printIdeas();
-	dogBrain.setIdeas(0, "nonono");
-	dogBrain.setIdeas(1, "no god plz no!");
-	dogBrain.printIdeas();
-	Cat nyang(catBrain);
-	Cat nabi(nyang);
-	nabi.setIdeas(2, "hey, this is in a dream~~!");
-	nabi.printIdeas();
+	Cat cat;
+	Dog dog;
+	Cat copycat = cat;
+	Dog copydog = dog;
+	Cat deepcat(copycat);
+	Dog deepdog(copydog);
+	deepcat.setIdeas(0, "hi!");
+	deepcat.setIdeas(1, "im cat!");
+	deepcat.setIdeas(2, "bye!!");
+	deepcat.printIdeas();
+
+	deepdog.setIdeas(0, "hi!");
+	deepdog.setIdeas(1, "im dog!");
+	deepdog.setIdeas(2, "bye!!");
+	deepdog.printIdeas();
 }

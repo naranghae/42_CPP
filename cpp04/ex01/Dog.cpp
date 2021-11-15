@@ -15,25 +15,21 @@
 Dog::Dog()
 {
 	this->type = "Dog";
+	this->brain = new Brain();
 	std::cout << "Dog Constructor called." << std::endl;
 }
 
 Dog::~Dog()
 {
+	delete this->brain;
 	std::cout << "Dog Destructor called." << std::endl;
 }
 
 Dog::Dog(Dog const &src)
 {
 	std::cout << "Dog copy Constructor called." << std::endl;
-	*this = src;
-}
-
-Dog::Dog(Brain &brain)
-{
-	this->brain = &brain;
-	this->type = "Dog";
-	std::cout << "Dog Constructor called." << std::endl;
+	this->type = src.type;
+	this->brain = new Brain(*src.brain);
 }
 
 Dog &Dog::operator=(Dog const &src)
@@ -41,8 +37,8 @@ Dog &Dog::operator=(Dog const &src)
 	std::cout << "Dog equal operator called." << std::endl;
 	if (this != &src)
 	{
-		brain = src.brain;
-		this->type = src.type;
+		delete this->brain;
+		this->brain = new Brain(*src.brain);
 	}
 	return *this;
 }

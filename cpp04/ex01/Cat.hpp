@@ -20,7 +20,6 @@ public:
 	Cat();
 	~Cat();
 	Cat(Cat const &src);
-	Cat(Brain &brain);
 	Cat &operator=(Cat const &src);
 	virtual void	makeSound() const;
 	void setIdeas(int i, std::string idea);

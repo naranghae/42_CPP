@@ -20,7 +20,6 @@ public:
 	Dog();
 	~Dog();
 	Dog(Dog const &src);
-	Dog(Brain &brain);
 	Dog &operator=(Dog const &src);
 	virtual void	makeSound() const;
 	void setIdeas(int i, std::string idea);
