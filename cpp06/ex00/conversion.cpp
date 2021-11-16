@@ -65,6 +65,8 @@ int		valueCheck(char *pEnd)
 			return 1;
 		i++;
 	}
+	if (pEnd[0] != 'f')
+		return 1;
 	return 0;
 }
 
