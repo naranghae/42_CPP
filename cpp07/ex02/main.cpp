@@ -17,6 +17,7 @@ int main(int, char**)
 {
     Array<int> numbers(MAX_VAL);
     int* mirror = new int[MAX_VAL];
+    int *a = new int();
     srand(time(NULL));
     for (int i = 0; i < MAX_VAL; i++)
     {
@@ -60,6 +61,8 @@ int main(int, char**)
          std::cout << "numbers[" << i << "]: " << numbers[i] << std::endl;
        
     }
+    std::cout << *a << std::endl;
+    delete a;
     delete [] mirror;
     return 0;
 }
