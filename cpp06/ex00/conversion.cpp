@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/15 10:02:58 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/16 08:31:09 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	toChar(double value)
 {
 	std::cout << "char: ";
 
-	if (value >= 32 && value <= 126)
+	if (value >= 32 && value < 127)
 		std::cout << "'" << static_cast<char>(value) << "'" << std::endl;
 	else if (value < 0 || value > 127 || std::isnan(value) == 0)
 		std::cout << "Non displayable" << std::endl;
@@ -54,11 +54,35 @@ void	toDouble(double value)
 
 }
 
+int		valueCheck(char *pEnd)
+{
+	if (!pEnd || !(*pEnd))
+		return 0;
+	int i = 1;
+	while(pEnd[i])
+	{
+		if (!std::isspace(pEnd[i]))
+			return 1;
+		i++;
+	}
+	return 0;
+}
+
 void	stringConversion(char *argv)
 {
 	double value;
 	char *pEnd;
-	value = std::strtod(argv, &pEnd);
+
+	if (std::strlen(argv) == 1 && !std::isdigit(*argv))
+		value = static_cast<double>(*argv);
+	else {
+		value = std::strtod(argv, &pEnd);
+		if (valueCheck(pEnd))
+		{
+			std::cout << "input value Error" << std::endl;
+			return;
+		}
+	}
 	toChar(value);
 	toInt(value);
 	toFloat(value);
