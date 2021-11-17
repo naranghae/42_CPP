@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/11/13 11:07:06 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/17 14:55:23 by chanykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,32 +18,32 @@ template <typename T>
 class Array {
 private:
 	T *arr;
-	unsigned int idx;
+	unsigned int n;
 public:
-	Array(): arr(new T[0]), idx(0){}
+	Array(): arr(new T[0]), n(0){}
 	~Array() {
 		delete[] arr;
 	}
-	Array(unsigned int n): arr(new T[n]), idx(n){}
-	Array(Array const &copy): arr(new T[copy.size()]), idx(copy.size())
+	Array(unsigned int _n): arr(new T[_n]), n(_n){}
+	Array(Array const &copy): arr(new T[copy.size()]), n(copy.size())
 	{
-		for (unsigned int i = 0;i < this->idx ; i++)
+		for (unsigned int i = 0;i < this->n ; i++)
 			arr[i] = copy.arr[i];
 	}
 	Array	&operator=(Array const &src)
 	{
 		delete[] arr;
 		arr = new T[src.size()];
-		idx = src.size();
-		for (unsigned int i = 0; i < idx; i++)
+		n = src.size();
+		for (unsigned int i = 0; i < n; i++)
 			arr[i] = src.arr[i];
 	}
 
-	unsigned int size() const {return idx;}
-	T &operator[](unsigned int idx){
-		if (idx < 0 || idx >= this->idx)
+	unsigned int size() const {return n;}
+	T &operator[](unsigned int const _n){
+		if (_n < 0 || _n >= this->n)
 			throw OutOfRange();
-		return this->arr[idx];
+		return this->arr[_n];
 	}
 
 	class OutOfRange: public std::exception

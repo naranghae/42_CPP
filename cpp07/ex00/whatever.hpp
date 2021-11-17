@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   whatever.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/21 11:14:22 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/17 14:51:50 by chanykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	swap(T &x, T &y) {
 }
 
 template <typename T>
-T min(T x, T y) {
+T min(T const x, T const y) {
 	if (x < y)
 		return x;
 	return y;
 }
 
 template <typename T>
-T max(T x, T y) {
+T max(T const x, T const y) {
 	if (x > y)
 		return x;
 	return y;

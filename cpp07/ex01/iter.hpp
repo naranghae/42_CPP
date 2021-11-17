@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
+/*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/11/16 10:49:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/17 14:49:25 by chanykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 # include <cstring>
 
 template <typename T>
-void	execute(T &var){
+void	execute(T const &var){
 		std::cout << var;
 }
 
 template <typename T>
-void	iter(T *addr, int len, void (*func)(T &var)) {
+void	iter(T *addr, int len, void (*func)(T const &var)) {
 	for(int i = 0 ;i < len; i++){
 		(*func)(addr[i]);
 		if (i + 1 == len)

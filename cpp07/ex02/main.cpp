@@ -6,7 +6,7 @@
 /*   By: chanykim <chanykim@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/07/06 21:08:25 by chanykim         ###   ########.fr       */
+/*   Updated: 2021/11/17 13:27:41 by chanykim         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int main(int, char**)
     {
         numbers[i] = rand();
          std::cout << "numbers[" << i << "]: " << numbers[i] << std::endl;
-       
+
     }
     std::cout << *a << std::endl;
     delete a;
