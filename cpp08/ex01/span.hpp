@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/11/13 11:16:15 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/18 12:11:04 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ public:
 	Span	&operator=(Span const  &src);
 	Span(unsigned int _n);
 	void addNumber(int n);
-	int	shortestSpan();
-	int	longestSpan();
+	void addNumbers(int *num, int size);
+	unsigned int	shortestSpan();
+	unsigned int	longestSpan();
+	void showElement();
 	class EmptyArrayException: public std::exception{
 		public:
 			virtual const char * what() const throw() {

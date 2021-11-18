@@ -41,5 +41,33 @@ int main(void)
     {
         std::cerr << "out of range." << '\n';
     }
+
+    std::list<int>  lst;
+    for (int i = 0 ; i < 10; i++)
+        lst.push_back(i);
+    try
+    {
+        std::cout << "index find: " << easyfind(lst, 4) << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "out of range." << '\n';
+    }
+    try
+    {
+        std::cout << "index find: " << easyfind(lst, 2) << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "out of range." << '\n';
+    }
+    try
+    {
+        std::cout << easyfind(lst, 42) << std::endl;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << "out of range." << '\n';
+    }
     return 0;
 }

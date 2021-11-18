@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/10/28 11:02:33 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/18 10:49:47 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <iterator>
 # include <algorithm>
 # include <vector>
+# include <list>
 
 template<typename T>
 int	 easyfind(T &container, int i)

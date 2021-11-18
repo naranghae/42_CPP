@@ -22,13 +22,14 @@ void    mutantStackExample(void)
     std::cout << "before pop, top: " << mstack.top() << std::endl;
 
     mstack.pop();
-   std::cout << "after pop, top: " << mstack.top() << std::endl;
+    std::cout << "after pop, top: " << mstack.top() << std::endl;
     std::cout << "size: " << mstack.size() << std::endl;
 
     mstack.push(3);
     mstack.push(5);
     mstack.push(737);
-
+    mstack.push(42);
+    mstack.push(34);
     mstack.push(0);
 
     MutantStack<int>::iterator it = mstack.begin();
@@ -42,6 +43,7 @@ void    mutantStackExample(void)
         ++it;
     }
     std::stack<int> s(mstack);
+ 
 }
 
 void    mutantListExample(void)
@@ -60,7 +62,8 @@ void    mutantListExample(void)
     mlist.push_back(3);
     mlist.push_back(5);
     mlist.push_back(737);
-
+    mlist.push_back(42);
+    mlist.push_back(34);
     mlist.push_back(0);
 
     std::list<int>::iterator it = mlist.begin();

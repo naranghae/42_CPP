@@ -6,7 +6,7 @@
 /*   By: user42 <user42@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/06 14:33:30 by chanykim          #+#    #+#             */
-/*   Updated: 2021/11/13 11:16:37 by user42           ###   ########.fr       */
+/*   Updated: 2021/11/18 12:21:36 by user42           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,20 @@ void	Span::addNumber(int const add)
 	v.push_back(add);
 }
 
-int	Span::shortestSpan()
+void	Span::addNumbers(int *num, int size)
+{
+	std::vector<int>::iterator it = v.begin();
+	this->v.insert(it, num, num + size);
+	if (this->v.size() > n)
+	{
+		this->v.clear();
+		std::vector<int>().swap(this->v);
+		throw MemoryException();
+	}
+}
+
+
+unsigned int	Span::shortestSpan()
 {
 	if (!this->v.size())
 		throw EmptyArrayException();
@@ -58,7 +71,7 @@ int	Span::shortestSpan()
 	return ret;
 }
 
-int	Span::longestSpan()
+unsigned int	Span::longestSpan()
 {
 	if (!this->v.size())
 		throw EmptyArrayException();
@@ -67,4 +80,11 @@ int	Span::longestSpan()
 	std::vector<int>	tmp(this->v);
 	std::sort(tmp.begin(), tmp.end());
 	return *(tmp.end() - 1) - *tmp.begin();
+}
+
+void	Span::showElement()
+{
+	std::vector<int>::iterator it;
+	for(it = this->v.begin(); it < this->v.end(); it++)
+		std::cout << "element: " << *it << std::endl;
 }
